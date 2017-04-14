@@ -13,7 +13,7 @@
   const gameIsEnd = () => {
     const array = generateMultipleArray();
     //ŽO˜A‚Ì”»’è
-    
+
     console.table(array);
     return false;
   }
@@ -22,18 +22,15 @@
     const className = event.target.className;
     console.log(className);
     if (orderCount % 2 == 0) {
-      if (!/pink/.test(className)){
-        if (!/black/.test(className)) {
-          event.target.className += ' black';
-          orderCount++;
-        }
+      if (!/pink/.test(className) && !/black/.test(className)){
+        event.target.className += ' black';
+        orderCount++;
       }
-    } else {
-      if (!/black/.test(className)) {
-        if (!/pink/.test(className)) {
-          event.target.className += ' pink';
-          orderCount++;
-        }
+    }
+    else {
+      if (!/black/.test(className) && !/pink/.test(className)) {
+        event.target.className += ' pink';
+        orderCount++;
       }
     }
     if (gameIsEnd()) {
