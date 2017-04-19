@@ -12,10 +12,30 @@
 
   const gameIsEnd = () => {
     const array = generateMultipleArray();
-    //三連の判定
+    let judgment = false;
+    //detectThree
+    for ( let i = 0; i < array.length; i++ ) {
+      for ( let j = 0; j < array.length; j++ ) {
+        if (array[i][j]) {
+          let victoryColor = array[i][j];
+        }
+        //lengthJudgment
+        if ( i === 0 ) {
+          if ( array[i+1][j] == victoryColor && array[i+2][j] == victoryColor ) {
+            judgment = true;
+          }
+        }
 
+        //widthJudgment
+        if ( j === 0 ) {
+          if ( array[i][j+1] == victoryColor && array[i][j+2] == victoryColor ) {
+            judgment = true;
+          }
+        }
+      }
+    }
     console.table(array);
-    return false;
+    return judgment;
   }
 
   const onClick = (event) => {
@@ -34,7 +54,7 @@
       }
     }
     if (gameIsEnd()) {
-      alert('ゲーム終了です');
+      alert('game is end');
     }
   };
   pieces.forEach((piece) => {
